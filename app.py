@@ -1,9 +1,15 @@
 #!flask/bin/python
-from flask import Flask, jsonify, request, make_response
-from model.champion import champion
-from random import random
 import numpy as np
+import os
+from flask import Flask, jsonify, request, make_response
+from sklearn.externals import joblib
 
+__pickle_dir__ = os.path.join(
+		os.path.dirname(os.path.abspath(__file__)),
+		"pickle/champion.pkl"
+	)
+
+champion = joblib.load(__pickle_dir__) 
 app = Flask(__name__)
 
 @app.route('/predict', methods=['GET'])
