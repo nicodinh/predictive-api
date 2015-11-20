@@ -2,6 +2,9 @@ import urllib, json
 from random import random
 
 def params_predict():
+	"""
+	Predicts using the paramspredict url.
+	"""
 	sepal_length = round(random()*7, 3)
 	sepal_width = round(random()*7, 3)
 	petal_length = round(random()*7, 3)
@@ -12,6 +15,9 @@ def params_predict():
 	return data
 
 def id_predict(id):
+	"""
+	Predicts using the idpredict url.
+	"""
 	url = "http://127.0.0.1:5000/idpredict/{}".format(id)
 	response = urllib.urlopen(url)
 	data = json.loads(response.read())
